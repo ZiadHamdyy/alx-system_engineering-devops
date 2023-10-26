@@ -2,6 +2,6 @@
 #displays the content of the file /etc/passwd
 while read -r passwd;
 do
-  echo "$passwd" | cut -d ':' -f 1,3,6
+	echo "$passwd" | cut -d ':' -f 1,3,6
 done < /etc/passwd
 
