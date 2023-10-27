@@ -4,17 +4,14 @@
 # Displays I hate the kill command when receiving a SIGTERM signal
 # Displays Y U no love me?! when receiving a SIGINT signal
 # Deletes the file /var/run/holbertonscript.pid and terminate itself when receiving a SIGQUIT or SIGTERM signal
+trap "echo \"Y U no love me?!\"; exit" SIGINT
+trap "sudo rm /var/run/myscript.pid; exit" SIGQUIT
+trap "echo \"I hate the kill command\"; sudo rm /var/run/myscript.pid; exit" SIGTERM
 
-function love() {
-    rm /var/run/holbertonscript.pid
-    exit
-}
+echo "$$" > /var/run/myscript.pid
 
-trap 'echo "I hate the kill command";love' SIGTERM
-trap 'echo "Y U no love me?!;love"' SIGINT
-
-echo $$ >> /var/run/holbertonscript.pid
-while [ true ];
+while true
 do
-    echo "To infinity and beyond"
+	echo "To infinity and beyond"
+	sleep 2
 done
