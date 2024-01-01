@@ -1,23 +1,12 @@
-# 100-puppet_ssh_config.pp
+# Using Puppet to make changes to our configuration file.
 
-# Ensure the SSH client configuration file is present
-file { '/home/vagrant/.ssh/config':
-  ensure => file,
-  mode   => '0600',
-  owner  => 'vagrant',
-  group  => 'vagrant',
-}
+$cont = 'Host *
+        IdentityFile ~/.ssh/school
+        PasswordAuthentication no
+	'
 
-# Configure the SSH client to use the private key ~/.ssh/school
-file_line { 'Declare identity file':
-  path   => '/home/vagrant/.ssh/config',
-  line   => '    IdentityFile ~/.ssh/school',
-  ensure => present,
-}
-
-# Configure the SSH client to refuse password authentication
-file_line { 'Turn off passwd auth':
-  path   => '/home/vagrant/.ssh/config',
-  line   => '    PasswordAuthentication no',
-  ensure => present,
+file { 'Change-file':
+  ensure  => 'file',
+  path    => '/etc/ssh/ssh_config',
+  content => $cont,
 }
