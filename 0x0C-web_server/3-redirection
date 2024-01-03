@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #Install nginx
 
-sudo apt-get update
+sudo apt-get -y update
 
 sudo apt-get install -y nginx
 
@@ -9,6 +9,6 @@ sudo ufw allow 'Nginx HTTP'
 
 sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html';
 
-sudo sed -i 's/\blisten 80 default_server\b/listen 80 default_server;/g' /etc/nginx/sites-available/default
+sudo sed -i '/blisten 80 default_server;/a rewrite ^/redirect_me https://github.com/ZiadHamdyy/ permanent;' /etc/nginx/sites-available/default;
 
 sudo service nginx start;
