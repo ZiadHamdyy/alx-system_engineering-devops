@@ -9,6 +9,6 @@ sudo ufw allow 'Nginx HTTP'
 
 sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html';
 
-sudo sed -i '/blisten 80 default_server;/a rewrite ^/redirect_me https://github.com/ZiadHamdyy/ permanent;' /etc/nginx/sites-available/default;
+sudo sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.github.com/ZiadHamdyy/ permanent;' /etc/nginx/sites-available/default;
 
 sudo service nginx restart;
