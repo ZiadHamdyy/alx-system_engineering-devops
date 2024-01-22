@@ -1,16 +1,3 @@
-# START OPENVPN RULES
-# NAT table rules
-*nat
-:POSTROUTING ACCEPT [0:0]
-
-# Redirect traffic from port 8080 to port 80
--A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
-
-# don't delete the 'COMMIT' line or these nat table rules won't
-# be processed
-COMMIT
-# END OPENVPN RULES
-
 #
 # rules.before
 #
