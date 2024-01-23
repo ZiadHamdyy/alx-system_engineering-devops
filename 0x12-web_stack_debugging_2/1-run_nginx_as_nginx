@@ -3,6 +3,9 @@
 
 sed -i 's/user\s*[^;]*;/user nginx;/' /etc/nginx/nginx.conf
 
+chmod 444 /etc/nginx/nginx.conf
+pkill apache2
+
 sed -i 's/listen\s*[^;]*;/listen 8080;/g' /etc/nginx/sites-available/default
 
 nginx -t && service nginx restart
