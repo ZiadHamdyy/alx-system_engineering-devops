@@ -22,6 +22,8 @@ print("Employee {:s} is done with tasks({:d}/{:d}):".format(
 [print("\t {:s}".format(task)) for task in completed_tasks]
 
 if __name__ == '__main__':
+    """main function to excute only with this file"""
+
     if len(sys.argv) != 2:
         print('Usage: python3 todo.py EMPLOYEE_ID')
         sys.exit(1)
