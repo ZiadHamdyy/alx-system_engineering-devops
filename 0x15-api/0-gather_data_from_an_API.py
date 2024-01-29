@@ -11,18 +11,19 @@ if __name__ == '__main__':
         sys.exit(1)
     employee_id = sys.argv[1]
 
-user = requests.get("https://jsonplaceholder.typicode.com/users/{}".format(
-        sys.argv[1])).json()
-todo = requests.get("https://jsonplaceholder.typicode.com/todos",
-                    params={"userId": sys.argv[1]}).json()
+    user = requests.get("https://jsonplaceholder.typicode.com/users/{}".format(
+            sys.argv[1])).json()
+    todo = requests.get("https://jsonplaceholder.typicode.com/todos",
+                        params={"userId": sys.argv[1]}).json()
 
-completed_tasks = []
+    completed_tasks = []
 
-for task in todo:
-    if task.get('completed'):
-        completed_tasks.append(task['title'])
+    for task in todo:
+        if task.get('completed'):
+            completed_tasks.append(task['title'])
 
-print("Employee {:s} is done with tasks({:d}/{:d}):".format(
-    user.get('name'), len(completed_tasks), len(todo)))
+    print("Employee {:s} is done with tasks({:d}/{:d}):".format(
+        user.get('name'), len(completed_tasks), len(todo)))
 
-[print("\t {:s}".format(task)) for task in completed_tasks]
+    for task in completed_tasks:
+        print("\t {:s}".format(task))
