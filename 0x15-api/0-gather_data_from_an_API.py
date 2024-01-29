@@ -4,6 +4,12 @@
 import requests
 import sys
 
+if __name__ == '__main__':
+    """main function to excute only with this file"""
+    if len(sys.argv) != 2:
+        print('Usage: python3 todo.py EMPLOYEE_ID')
+        sys.exit(1)
+    employee_id = sys.argv[1]
 
 user = requests.get("https://jsonplaceholder.typicode.com/users/{}".format(
         sys.argv[1])).json()
@@ -20,11 +26,3 @@ print("Employee {:s} is done with tasks({:d}/{:d}):".format(
     user.get('name'), len(completed_tasks), len(todo)))
 
 [print("\t {:s}".format(task)) for task in completed_tasks]
-
-if __name__ == '__main__':
-    """main function to excute only with this file"""
-
-    if len(sys.argv) != 2:
-        print('Usage: python3 todo.py EMPLOYEE_ID')
-        sys.exit(1)
-    employee_id = sys.argv[1]
