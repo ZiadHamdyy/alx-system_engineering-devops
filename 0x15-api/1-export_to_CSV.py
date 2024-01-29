@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """Python script to export data in the CSV format"""
 
+import csv
 import json
 import requests
 import sys
-import csv
 
 if __name__ == '__main__':
     """main function to excute only with this file"""
